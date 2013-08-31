@@ -1,0 +1,6 @@
+*.log
+*.pot
+*.pyc
+*.db
+*.html~
+
