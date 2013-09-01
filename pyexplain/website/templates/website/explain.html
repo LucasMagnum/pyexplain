@@ -1,0 +1,46 @@
+{% extends 'website/base.html' %}
+{% load staticfiles %}
+
+{% block head %}
+<link href="{% static 'website/css/prettify.css' %}" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="{% static 'website/js/prettify.js' %}"></script>
+
+<style type="text/css">
+  /* reset the 'a' color */
+  pre a {color:inherit !important;}
+  pre a:hover{color:inherit !important;}
+</style>
+{% endblock head %}
+
+{% block body %}
+  {% if code %}
+    <pre class="col-xs-12 prettyprint linenums language-python skin-desert">{{ code }}</pre>
+  {% endif %}
+{% endblock body %}
+
+{% block scripts %}
+<script type="text/javascript">
+
+  function show_links(){
+    keywords = {
+      {% for keyword in keywords %}
+        "{{ keyword.codname }}": "{{ keyword.get_url }}"{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    }
+    $('.kwd, .pln').each(function(){
+      keyword = $(this);
+      original_text = $(this).text();
+      text = original_text.trim();
+      if (keywords.hasOwnProperty(text)){
+        url = keywords[text];
+        keyword.html("<a href=" + url + " target='_blank'>" + original_text + "</a>");
+      };
+    });
+  }
+
+  $(function(){
+    prettyPrint();
+    show_links();
+  });
+</script>
+{% endblock scripts %}

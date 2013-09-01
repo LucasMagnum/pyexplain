@@ -4,6 +4,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # url(r'^$', 'pyexplain.views.home', name='home'),
+    url(r'^', include('website.urls', namespace='website')),
     url(r'^admin/', include(admin.site.urls)),
 )
