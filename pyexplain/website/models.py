@@ -27,6 +27,7 @@ class Category(models.Model):
 
 class Keyword(models.Model):
     codname = models.CharField(u'Código/Nome', max_length=150)
+    description = models.TextField(u'Descrição', blank=True)
     category = models.ForeignKey(Category)
 
     def __unicode__(self):

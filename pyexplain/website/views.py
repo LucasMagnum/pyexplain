@@ -14,8 +14,17 @@ class ExplainView(generic.TemplateView):
 
     def post(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
-        context['code'] = request.POST.get('code')
-        context['keywords'] = Keyword.objects.all()
+        code = request.POST.get('code')
+        keywords = Keyword.objects.all()
+
+        if code is not None:
+            lines = code.split('\n')
+            used_keywords = filter(
+                lambda k: any(k.codname in line for line in lines),
+                keywords)
+            context['keywords'] = used_keywords
+            context['code'] = code
+
         return self.render_to_response(context)
 
 

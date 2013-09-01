@@ -1,5 +1,5 @@
 {% extends 'website/base.html' %}
-{% load staticfiles %}
+{% load staticfiles utils_tags %}
 
 {% block head %}
 <link href="{% static 'website/css/prettify.css' %}" type="text/css" rel="stylesheet" />
@@ -9,6 +9,9 @@
   /* reset the 'a' color */
   pre a {color:inherit !important;}
   pre a:hover{color:inherit !important;}
+  .popover{color:#000;}
+  .popover-title{font-weight: bold;}
+  .popover-content{word-break:break-word;}
 </style>
 {% endblock head %}
 
@@ -24,16 +27,21 @@
   function show_links(){
     keywords = {
       {% for keyword in keywords %}
-        "{{ keyword.codname }}": "{{ keyword.get_url }}"{% if not forloop.last %},{% endif %}
+        '{{ keyword.codname }}': {
+          'url': '{{ keyword.get_url }}',
+          'desc': '{{ keyword.description|to_html }}'
+        }{% if not forloop.last %},{% endif %}
       {% endfor %}
     }
+
     $('.kwd, .pln').each(function(){
       keyword = $(this);
       original_text = $(this).text();
       text = original_text.trim();
       if (keywords.hasOwnProperty(text)){
-        url = keywords[text];
-        keyword.html("<a href=" + url + " target='_blank'>" + original_text + "</a>");
+        url = keywords[text].url;
+        desc = keywords[text].desc;
+        keyword.html("<a data-toggle='popover' data-placement='bottom' data-title='"+ text +"' data-content='"+ desc +"' data-html=true href='" + url + "' target='_blank'>" + original_text + "</a>");
       };
     });
   }
@@ -41,6 +49,15 @@
   $(function(){
     prettyPrint();
     show_links();
+
+    $('a[data-toggle=popover]').hover(function(){
+      $(this).popover('show');
+    });
+
+    $('a[data-toggle=popover]').mouseout(function(){
+      $(this).popover('destroy');
+    });
+
   });
 </script>
 {% endblock scripts %}
