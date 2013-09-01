@@ -17,3 +17,11 @@ class ExplainView(generic.TemplateView):
         context['code'] = request.POST.get('code')
         context['keywords'] = Keyword.objects.all()
         return self.render_to_response(context)
+
+
+class KeywordDetail(generic.DetailView):
+    model = Keyword
+    context_object_name = 'keyword'
+    slug_field = 'codname'
+    slug_url_kwarg = 'codname'
+    template_name = 'website/keyword_detail.html'

@@ -1,5 +1,6 @@
 # coding: utf-8
 from django.db import models
+from django.core.urlresolvers import reverse_lazy
 
 
 class Category(models.Model):
@@ -24,7 +25,6 @@ class Category(models.Model):
         return self.name
 
 
-
 class Keyword(models.Model):
     codname = models.CharField(u'Código/Nome', max_length=150)
     category = models.ForeignKey(Category)
@@ -35,7 +35,7 @@ class Keyword(models.Model):
     def get_url(self):
         typo = self.category.typo
         if typo == Category.keyword:
-            return
+            return reverse_lazy('website:keyword_detail', kwargs={'codname': self.codname})
         if typo == Category.builtin:
             return 'http://docs.python.org/2/library/functions.html#%s' % self.codname
         if typo == Category.standard:
