@@ -3,61 +3,42 @@
 
 {% block head %}
 <link href="{% static 'website/css/prettify.css' %}" type="text/css" rel="stylesheet" />
+<link href="{% static 'website/css/base.css' %}" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="{% static 'website/js/prettify.js' %}"></script>
 
-<style type="text/css">
-  /* reset the 'a' color */
-  pre a {color:inherit !important;}
-  pre a:hover{color:inherit !important;}
-  .popover{color:#000;}
-  .popover-title{font-weight: bold;}
-  .popover-content{word-break:break-word;}
-</style>
 {% endblock head %}
 
 {% block body %}
   {% if code %}
-    <pre class="col-xs-12 prettyprint linenums language-python skin-desert">{{ code }}</pre>
+    <pre class="col-xs-12 col-sm-9 prettyprint linenums language-python skin-desert">{{ code }}</pre>
+    <div class="col-xs-12 col-sm-3" id="analyzer">
+      <h4>Análise do código</h4>
+      <dl>
+        <dt>Palavras no código</dt>
+        <dd id="words-count">0</dd>
+        <dt title="Quanto do seu código foi reconhecido">Palavras mapeadas</dt>
+        <dd id="mapped-words">
+          <div class="progress progress-striped">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </dd>
+      </dl>
+    </div>
   {% endif %}
 {% endblock body %}
 
 {% block scripts %}
 <script type="text/javascript">
-
-  function show_links(){
-    keywords = {
-      {% for keyword in keywords %}
-        '{{ keyword.codname }}': {
-          'url': '{{ keyword.get_url }}',
-          'desc': '{{ keyword.description|to_html }}'
-        }{% if not forloop.last %},{% endif %}
-      {% endfor %}
-    }
-
-    $('.kwd, .pln').each(function(){
-      keyword = $(this);
-      original_text = $(this).text();
-      text = original_text.trim();
-      if (keywords.hasOwnProperty(text)){
-        url = keywords[text].url;
-        desc = keywords[text].desc;
-        keyword.html("<a data-toggle='popover' data-placement='bottom' data-title='"+ text +"' data-content='"+ desc +"' data-html=true href='" + url + "' target='_blank'>" + original_text + "</a>");
-      };
-    });
-  }
-
-  $(function(){
-    prettyPrint();
-    show_links();
-
-    $('a[data-toggle=popover]').hover(function(){
-      $(this).popover('show');
-    });
-
-    $('a[data-toggle=popover]').mouseout(function(){
-      $(this).popover('destroy');
-    });
-
-  });
+keywords = {
+  {% for keyword in keywords %}
+    '{{ keyword.codname }}': {
+      'url': '{{ keyword.get_url }}',
+      'desc': '{{ keyword.description|truncatechars:"150"|to_html }}',
+      'category': '{{ keyword.category_id }}'
+    }{% if not forloop.last %},{% endif %}
+  {% endfor %}
+}
 </script>
+<script type="text/javascript" src="{% static 'website/js/explain.js' %}"></script>
 {% endblock scripts %}

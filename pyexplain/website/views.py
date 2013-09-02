@@ -1,5 +1,4 @@
 # coding: utf-8
-import datetime
 from django.views import generic
 
 from .models import Keyword
@@ -15,13 +14,15 @@ class ExplainView(generic.TemplateView):
     def post(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         code = request.POST.get('code')
-        keywords = Keyword.objects.all()
+        keywords = Keyword.objects.select_related('category').all()
 
         if code is not None:
             lines = code.split('\n')
+
             used_keywords = filter(
                 lambda k: any(k.codname in line for line in lines),
                 keywords)
+
             context['keywords'] = used_keywords
             context['code'] = code
 

@@ -16,7 +16,7 @@ class Category(models.Model):
     name = models.CharField('Nome', max_length=150)
     description = models.TextField(u'Descrição', blank=True)
     typo = models.CharField('Tipo', max_length=20, choices=TYPE_CHOICES)
-    
+
     class Meta:
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
@@ -29,6 +29,9 @@ class Keyword(models.Model):
     codname = models.CharField(u'Código/Nome', max_length=150)
     description = models.TextField(u'Descrição', blank=True)
     category = models.ForeignKey(Category)
+
+    class Meta:
+        ordering = ['codname']
 
     def __unicode__(self):
         return self.codname
