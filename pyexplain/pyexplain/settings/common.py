@@ -1,6 +1,7 @@
-# Common settings 
+# Common settings
 import os
 
+VERSION = "0.1"
 
 PROJECT_DIR = os.path.dirname(__file__)
 
@@ -66,7 +67,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    
+
     # local apps
     'website',
 )
