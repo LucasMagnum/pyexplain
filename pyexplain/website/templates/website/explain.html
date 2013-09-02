@@ -23,6 +23,15 @@
             </div>
           </div>
         </dd>
+        {% for category in categorys %}
+          <dt>{{ category.get_typo_display }}</dt>
+          <dd data-id="{{ category.id }}">
+            <div class="progress progress-striped">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+              </div>
+            </div>
+          </dd>
+        {% endfor %}
       </dl>
     </div>
   {% endif %}
@@ -30,15 +39,8 @@
 
 {% block scripts %}
 <script type="text/javascript">
-keywords = {
-  {% for keyword in keywords %}
-    '{{ keyword.codname }}': {
-      'url': '{{ keyword.get_url }}',
-      'desc': '{{ keyword.description|truncatechars:"150"|to_html }}',
-      'category': '{{ keyword.category_id }}'
-    }{% if not forloop.last %},{% endif %}
-  {% endfor %}
-}
+  keywords = JSON.parse("{{ keywords|escapejs }}");
+  categorys = JSON.parse("{{ categorys_json|escapejs }}");
 </script>
 <script type="text/javascript" src="{% static 'website/js/explain.js' %}"></script>
 {% endblock scripts %}

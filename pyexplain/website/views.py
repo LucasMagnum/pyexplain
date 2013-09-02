@@ -1,7 +1,9 @@
 # coding: utf-8
+import json
 from django.views import generic
 
-from .models import Keyword
+from .models import Keyword, Category
+from .utils import queryset_dump
 
 
 class IndexView(generic.TemplateView):
@@ -15,6 +17,7 @@ class ExplainView(generic.TemplateView):
         context = self.get_context_data(**kwargs)
         code = request.POST.get('code')
         keywords = Keyword.objects.select_related('category').all()
+        categorys = list(Category.objects.all())
 
         if code is not None:
             lines = code.split('\n')
@@ -23,7 +26,9 @@ class ExplainView(generic.TemplateView):
                 lambda k: any(k.codname in line for line in lines),
                 keywords)
 
-            context['keywords'] = used_keywords
+            context['keywords'] = queryset_dump(used_keywords)
+            context['categorys'] = categorys
+            context['categorys_json'] = queryset_dump(categorys)
             context['code'] = code
 
         return self.render_to_response(context)

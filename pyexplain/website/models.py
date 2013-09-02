@@ -1,6 +1,9 @@
 # coding: utf-8
 from django.db import models
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse
+from django.template.defaultfilters import truncatechars
+
+from .templatetags.utils_tags import to_html
 
 
 class Category(models.Model):
@@ -24,6 +27,18 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+    def queryset_dump(self):
+        """
+            Valores que devem ser retornados pelo dump de queryset
+        """
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'typo': self.typo,
+            'typo_display': self.get_typo_display()
+        }
+
 
 class Keyword(models.Model):
     codname = models.CharField(u'Código/Nome', max_length=150)
@@ -36,11 +51,30 @@ class Keyword(models.Model):
     def __unicode__(self):
         return self.codname
 
-    def get_url(self):
+    @property
+    def url(self):
         typo = self.category.typo
         if typo == Category.keyword:
-            return reverse_lazy('website:keyword_detail', kwargs={'codname': self.codname})
+            return reverse('website:keyword_detail', kwargs={'codname': self.codname})
         if typo == Category.builtin:
             return 'http://docs.python.org/2/library/functions.html#%s' % self.codname
         if typo == Category.standard:
             return 'http://docs.python.org/2/library/%s.html' % self.codname
+
+    @property
+    def desc(self):
+        """
+            Descrição formatada.
+        """
+        return to_html(truncatechars(self.description, 120))
+
+    def queryset_dump(self):
+        """
+            Valores que devem ser retornados pelo dump de queryset
+        """
+        return {
+            'codname': self.codname,
+            'description': self.desc,
+            'url': self.url,
+            'category_id': self.category_id
+        }
