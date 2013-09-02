@@ -1,0 +1,1059 @@
+[
+{
+  "pk": 1, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "permission", 
+    "name": "permission", 
+    "app_label": "auth"
+  }
+},
+{
+  "pk": 2, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "group", 
+    "name": "group", 
+    "app_label": "auth"
+  }
+},
+{
+  "pk": 3, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "user", 
+    "name": "user", 
+    "app_label": "auth"
+  }
+},
+{
+  "pk": 4, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "contenttype", 
+    "name": "content type", 
+    "app_label": "contenttypes"
+  }
+},
+{
+  "pk": 5, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "session", 
+    "name": "session", 
+    "app_label": "sessions"
+  }
+},
+{
+  "pk": 6, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "site", 
+    "name": "site", 
+    "app_label": "sites"
+  }
+},
+{
+  "pk": 7, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "logentry", 
+    "name": "log entry", 
+    "app_label": "admin"
+  }
+},
+{
+  "pk": 8, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "category", 
+    "name": "Categoria", 
+    "app_label": "website"
+  }
+},
+{
+  "pk": 9, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "keyword", 
+    "name": "keyword", 
+    "app_label": "website"
+  }
+},
+{
+  "pk": "6o83ucdqo2q6wmn96xatuls2vmvzfwtn", 
+  "model": "sessions.session", 
+  "fields": {
+    "expire_date": "2013-09-16T12:47:11Z", 
+    "session_data": "ZGFjNGQ5ZDNiZjI0NmU5MDU0NWNjZjM1ZDZjOWU3MTE5YzdiZjMyMDqAAn1xAShVEl9hdXRoX3VzZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHEDVQ1fYXV0aF91c2VyX2lkcQSKAQF1Lg=="
+  }
+},
+{
+  "pk": "b315lkng6wfeq627gqy9v3ew346psumx", 
+  "model": "sessions.session", 
+  "fields": {
+    "expire_date": "2013-09-16T12:43:54Z", 
+    "session_data": "NTUxYzc5MmI3MTEzNzIwM2YxYzE5MWQwMWQ4NGJiYzhlZWJiOGY2MjqAAn1xAS4="
+  }
+},
+{
+  "pk": "vwiunv4gyl2fver08fh6cggsd297qfyo", 
+  "model": "sessions.session", 
+  "fields": {
+    "expire_date": "2013-09-16T16:48:47Z", 
+    "session_data": "ZGFjNGQ5ZDNiZjI0NmU5MDU0NWNjZjM1ZDZjOWU3MTE5YzdiZjMyMDqAAn1xAShVEl9hdXRoX3VzZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHEDVQ1fYXV0aF91c2VyX2lkcQSKAQF1Lg=="
+  }
+},
+{
+  "pk": 1, 
+  "model": "sites.site", 
+  "fields": {
+    "domain": "example.com", 
+    "name": "example.com"
+  }
+},
+{
+  "pk": 1, 
+  "model": "website.category", 
+  "fields": {
+    "name": "keywords", 
+    "typo": "keywords", 
+    "description": ""
+  }
+},
+{
+  "pk": 2, 
+  "model": "website.category", 
+  "fields": {
+    "name": "built-in", 
+    "typo": "builtin", 
+    "description": ""
+  }
+},
+{
+  "pk": 3, 
+  "model": "website.category", 
+  "fields": {
+    "name": "standard library", 
+    "typo": "standard", 
+    "description": ""
+  }
+},
+{
+  "pk": 1, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "and", 
+    "description": "Operador l\u00f3gico 'E'."
+  }
+},
+{
+  "pk": 2, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "as", 
+    "description": ""
+  }
+},
+{
+  "pk": 3, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "assert", 
+    "description": "Serve para garantir que o resultado de uma opera\u00e7\u00e3o seja verdadeiro.\r\nExemplo: assert True == True\r\nCaso a express\u00e3o retorne um valor falso, ser\u00e1 gerado uma exce\u00e7\u00e3o no c\u00f3digo."
+  }
+},
+{
+  "pk": 4, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "break", 
+    "description": "Serve para interromper um la\u00e7o de repeti\u00e7\u00e3o."
+  }
+},
+{
+  "pk": 5, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "class", 
+    "description": "Serve para definir uma classe em Python.\r\nExemplo: \r\nclass Cachorro(object):pass\r\n"
+  }
+},
+{
+  "pk": 6, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "continue", 
+    "description": "Em la\u00e7os de repeti\u00e7\u00e3o, `continue` serve para saltar e ir direto para o pr\u00f3ximo la\u00e7o."
+  }
+},
+{
+  "pk": 7, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "def", 
+    "description": "Serve para definir fun\u00e7\u00f5es."
+  }
+},
+{
+  "pk": 8, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "del", 
+    "description": "Serve para apagar a refer\u00eancia a um objeto."
+  }
+},
+{
+  "pk": 9, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "elif", 
+    "description": ""
+  }
+},
+{
+  "pk": 10, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "else", 
+    "description": ""
+  }
+},
+{
+  "pk": 11, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "except", 
+    "description": "Usado para tratamento de exce\u00e7\u00f5es, quando executado quer dizer houve uma exce\u00e7\u00e3o no escopo do bloco ao qual est\u00e1 inclu\u00eddo."
+  }
+},
+{
+  "pk": 12, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "exec", 
+    "description": "Utilizado para executar algum c\u00f3digo Python.\r\nExemplo: exec(\"print 'hello world'\")"
+  }
+},
+{
+  "pk": 13, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "finally", 
+    "description": "\u00c9 utilizado para tratamento de exce\u00e7\u00f5es. O c\u00f3digo contido dentro deste bloco, ser\u00e1 sempre executado."
+  }
+},
+{
+  "pk": 14, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "for", 
+    "description": ""
+  }
+},
+{
+  "pk": 15, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "from", 
+    "description": "Serve para definir de qual m\u00f3dulo deseja importar algum item.\r\nExemplo: from &ltmodulo_nome&gt import &ltitem_nome&gt"
+  }
+},
+{
+  "pk": 16, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "global", 
+    "description": ""
+  }
+},
+{
+  "pk": 17, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "if", 
+    "description": "Utilizado para controle de fluxo. 'If' ou 'Se' \u00e9 utilizado para verificar se determinar condi\u00e7\u00e3o \u00e9 verdadeira.\r\nCaso seja verdadeira, entrar\u00e1 no bloco 'If' do contr\u00e1rio no bloco 'elif' ou 'else', o que vier primeiro.\r\nExemplo: if True: pass # Se verdadeiro, n\u00e3o fa\u00e7a nada.\r\n"
+  }
+},
+{
+  "pk": 18, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "import", 
+    "description": "Serve para importar m\u00f3dulos Python.\r\nExemplo: import &ltmodulo_nome&gt"
+  }
+},
+{
+  "pk": 19, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "in", 
+    "description": "Utilizado para verificar a exist\u00eancia de um determinado item dentro de uma cole\u00e7\u00e3o.\r\nExemplo: 'c\u00f3digo' in 'c\u00f3digo python' # retorna verdadeiro, pois 'c\u00f3digo' est\u00e1 contido em 'c\u00f3digo python'"
+  }
+},
+{
+  "pk": 20, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "is", 
+    "description": ""
+  }
+},
+{
+  "pk": 21, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "lambda", 
+    "description": " \u00e9 uma palavra chave do python que \u00e9 utilizada para definir pequenas fun\u00e7\u00f5es an\u00f4nimas. Esta \u00e9 uma das caracter\u00edsticas que o Python emprestou das linguagens funcionais mais famosas."
+  }
+},
+{
+  "pk": 22, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "not", 
+    "description": "Operador l\u00f3gico de nega\u00e7\u00e3o.\r\nExemplo: not u\"Pol\u00edticos honestos\""
+  }
+},
+{
+  "pk": 23, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "or", 
+    "description": ""
+  }
+},
+{
+  "pk": 24, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "pass", 
+    "description": "\u00c9 uma opera\u00e7\u00e3o nula, quando executada nada acontece. \r\nExemplo: if False: pass \r\nSe for falso, nada acontece."
+  }
+},
+{
+  "pk": 25, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "print", 
+    "description": "Serve para exibir informa\u00e7\u00f5es no console.\r\nExemplo: print \"Hello world.\""
+  }
+},
+{
+  "pk": 26, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "raise", 
+    "description": "Geralmente \u00e9 utilizado quando algo n\u00e3o ocorre corretamente e voc\u00ea deseja gerar uma exce\u00e7\u00e3o.\r\nExemplo: raise ValueError(\"N\u00e3o executado corretamente\")"
+  }
+},
+{
+  "pk": 27, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "return", 
+    "description": "Serve para retornar valores, se utilizada sem nenhum valor, retornar\u00e1 None.\r\nExemplo: return u\"Resultado \u00e9 15\""
+  }
+},
+{
+  "pk": 28, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "try", 
+    "description": ""
+  }
+},
+{
+  "pk": 29, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "while", 
+    "description": "Serve para definir la\u00e7os de repeti\u00e7\u00e3o. \r\nExemplo: while True: print \"verdade\" # Enquanto for verdade, exiba \"verdade\" na tela.\r\n"
+  }
+},
+{
+  "pk": 30, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "with", 
+    "description": ""
+  }
+},
+{
+  "pk": 31, 
+  "model": "website.keyword", 
+  "fields": {
+    "category": 1, 
+    "codname": "yield", 
+    "description": ""
+  }
+},
+{
+  "pk": 1, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_permission", 
+    "name": "Can add permission", 
+    "content_type": 1
+  }
+},
+{
+  "pk": 2, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_permission", 
+    "name": "Can change permission", 
+    "content_type": 1
+  }
+},
+{
+  "pk": 3, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_permission", 
+    "name": "Can delete permission", 
+    "content_type": 1
+  }
+},
+{
+  "pk": 4, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_group", 
+    "name": "Can add group", 
+    "content_type": 2
+  }
+},
+{
+  "pk": 5, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_group", 
+    "name": "Can change group", 
+    "content_type": 2
+  }
+},
+{
+  "pk": 6, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_group", 
+    "name": "Can delete group", 
+    "content_type": 2
+  }
+},
+{
+  "pk": 7, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_user", 
+    "name": "Can add user", 
+    "content_type": 3
+  }
+},
+{
+  "pk": 8, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_user", 
+    "name": "Can change user", 
+    "content_type": 3
+  }
+},
+{
+  "pk": 9, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_user", 
+    "name": "Can delete user", 
+    "content_type": 3
+  }
+},
+{
+  "pk": 10, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_contenttype", 
+    "name": "Can add content type", 
+    "content_type": 4
+  }
+},
+{
+  "pk": 11, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_contenttype", 
+    "name": "Can change content type", 
+    "content_type": 4
+  }
+},
+{
+  "pk": 12, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_contenttype", 
+    "name": "Can delete content type", 
+    "content_type": 4
+  }
+},
+{
+  "pk": 13, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_session", 
+    "name": "Can add session", 
+    "content_type": 5
+  }
+},
+{
+  "pk": 14, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_session", 
+    "name": "Can change session", 
+    "content_type": 5
+  }
+},
+{
+  "pk": 15, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_session", 
+    "name": "Can delete session", 
+    "content_type": 5
+  }
+},
+{
+  "pk": 16, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_site", 
+    "name": "Can add site", 
+    "content_type": 6
+  }
+},
+{
+  "pk": 17, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_site", 
+    "name": "Can change site", 
+    "content_type": 6
+  }
+},
+{
+  "pk": 18, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_site", 
+    "name": "Can delete site", 
+    "content_type": 6
+  }
+},
+{
+  "pk": 19, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_logentry", 
+    "name": "Can add log entry", 
+    "content_type": 7
+  }
+},
+{
+  "pk": 20, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_logentry", 
+    "name": "Can change log entry", 
+    "content_type": 7
+  }
+},
+{
+  "pk": 21, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_logentry", 
+    "name": "Can delete log entry", 
+    "content_type": 7
+  }
+},
+{
+  "pk": 22, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_category", 
+    "name": "Can add Categoria", 
+    "content_type": 8
+  }
+},
+{
+  "pk": 23, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_category", 
+    "name": "Can change Categoria", 
+    "content_type": 8
+  }
+},
+{
+  "pk": 24, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_category", 
+    "name": "Can delete Categoria", 
+    "content_type": 8
+  }
+},
+{
+  "pk": 25, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_keyword", 
+    "name": "Can add keyword", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 26, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_keyword", 
+    "name": "Can change keyword", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 27, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_keyword", 
+    "name": "Can delete keyword", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 1, 
+  "model": "auth.user", 
+  "fields": {
+    "username": "admin", 
+    "first_name": "", 
+    "last_name": "", 
+    "is_active": true, 
+    "is_superuser": true, 
+    "is_staff": true, 
+    "last_login": "2013-09-02T16:48:47Z", 
+    "groups": [], 
+    "user_permissions": [], 
+    "password": "pbkdf2_sha256$10000$bpINRKHaBwK7$jtgAHU4IVfKwistHaZYP5ChXrfQUMCYQOpQkMgyVOq4=", 
+    "email": "admin@admin.com.br", 
+    "date_joined": "2013-09-02T12:42:59Z"
+  }
+},
+{
+  "pk": 1, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 1, 
+    "action_time": "2013-09-02T12:47:21Z", 
+    "object_repr": "keywords", 
+    "object_id": "1", 
+    "change_message": "", 
+    "user": 1, 
+    "content_type": 8
+  }
+},
+{
+  "pk": 2, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 1, 
+    "action_time": "2013-09-02T12:47:28Z", 
+    "object_repr": "built-in", 
+    "object_id": "2", 
+    "change_message": "", 
+    "user": 1, 
+    "content_type": 8
+  }
+},
+{
+  "pk": 3, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 1, 
+    "action_time": "2013-09-02T12:47:38Z", 
+    "object_repr": "standard library", 
+    "object_id": "3", 
+    "change_message": "", 
+    "user": 1, 
+    "content_type": 8
+  }
+},
+{
+  "pk": 4, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:08:30Z", 
+    "object_repr": "lambda", 
+    "object_id": "21", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 5, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:09:14Z", 
+    "object_repr": "lambda", 
+    "object_id": "21", 
+    "change_message": "Nenhum campo modificado.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 6, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:13:03Z", 
+    "object_repr": "print", 
+    "object_id": "25", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 7, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:13:59Z", 
+    "object_repr": "not", 
+    "object_id": "22", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 8, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:14:59Z", 
+    "object_repr": "return", 
+    "object_id": "27", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 9, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:15:30Z", 
+    "object_repr": "import", 
+    "object_id": "18", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 10, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:16:47Z", 
+    "object_repr": "continue", 
+    "object_id": "6", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 11, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:18:50Z", 
+    "object_repr": "while", 
+    "object_id": "29", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 12, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:19:32Z", 
+    "object_repr": "class", 
+    "object_id": "5", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 13, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:22:24Z", 
+    "object_repr": "pass", 
+    "object_id": "24", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 14, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:22:49Z", 
+    "object_repr": "class", 
+    "object_id": "5", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 15, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:25:09Z", 
+    "object_repr": "from", 
+    "object_id": "15", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 16, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:28:09Z", 
+    "object_repr": "raise", 
+    "object_id": "26", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 17, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:30:42Z", 
+    "object_repr": "break", 
+    "object_id": "4", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 18, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:31:11Z", 
+    "object_repr": "def", 
+    "object_id": "7", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 19, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T13:50:51Z", 
+    "object_repr": "raise", 
+    "object_id": "26", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 20, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T16:51:45Z", 
+    "object_repr": "break", 
+    "object_id": "4", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 21, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T16:53:00Z", 
+    "object_repr": "assert", 
+    "object_id": "3", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 22, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T16:53:57Z", 
+    "object_repr": "del", 
+    "object_id": "8", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 23, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T16:54:48Z", 
+    "object_repr": "except", 
+    "object_id": "11", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 24, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T16:56:05Z", 
+    "object_repr": "exec", 
+    "object_id": "12", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 25, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T16:56:06Z", 
+    "object_repr": "exec", 
+    "object_id": "12", 
+    "change_message": "Nenhum campo modificado.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 26, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T16:59:56Z", 
+    "object_repr": "finally", 
+    "object_id": "13", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 27, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T17:03:41Z", 
+    "object_repr": "if", 
+    "object_id": "17", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 28, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T17:05:05Z", 
+    "object_repr": "and", 
+    "object_id": "1", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 29, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2013-09-02T17:07:03Z", 
+    "object_repr": "in", 
+    "object_id": "19", 
+    "change_message": "Modificado description.", 
+    "user": 1, 
+    "content_type": 9
+  }
+}
+]
