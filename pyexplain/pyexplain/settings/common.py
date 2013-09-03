@@ -1,7 +1,6 @@
 # Common settings
 import os
 
-
 PROJECT_DIR = os.path.dirname(__file__)
 
 DEBUG = False
@@ -10,6 +9,16 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     ('Lucas Magnum', 'contato@lucasmagnum.com.br'),
 )
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('EXPLAIN_DB'),
+        'USER': os.environ.get('EXPLAIN_DB_USER'),
+        'PASSWORD': os.environ.get('EXPLAIN_PASS')
+    }
+}
+
 
 MANAGERS = ADMINS
 

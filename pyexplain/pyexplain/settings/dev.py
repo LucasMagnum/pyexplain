@@ -4,14 +4,6 @@ from common import *
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pyexplain',
-        'USER': os.environ.get('MYSQL_USER'),
-        'PASSWORD': os.environ.get('MYSQL_PASS')
-    }
-}
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

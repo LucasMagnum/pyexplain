@@ -55,10 +55,3 @@ class CategoryDetail(generic.DetailView):
     slug_field = 'name'
     slug_url_kwarg = 'name'
     template_name = 'website/category_detail.html'
-
-
-def ajax_keywords(request):
-    data = {
-        'success': True,
-    }
-    return http.HttpResponse(json.dumps(data), mimetype="application/json")
