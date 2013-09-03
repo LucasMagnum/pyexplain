@@ -43,7 +43,7 @@ class Category(models.Model):
 class Keyword(models.Model):
     codname = models.CharField(u'Código/Nome', max_length=150)
     description = models.TextField(u'Descrição', blank=True)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, related_name='keywords')
 
     class Meta:
         ordering = ['codname']
@@ -53,13 +53,16 @@ class Keyword(models.Model):
 
     @property
     def url(self):
-        typo = self.category.typo
-        if typo == Category.keyword:
-            return reverse('website:keyword_detail', kwargs={'codname': self.codname})
-        if typo == Category.builtin:
+        return reverse('website:keyword_detail', kwargs={'codname': self.codname})
+
+    @property
+    def doc_url(self):
+        if self.category.typo == Category.builtin:
             return 'http://docs.python.org/2/library/functions.html#%s' % self.codname
-        if typo == Category.standard:
+        if self.category.typo == Category.standard:
             return 'http://docs.python.org/2/library/%s.html' % self.codname
+        return
+
 
     @property
     def desc(self):

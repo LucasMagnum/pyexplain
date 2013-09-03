@@ -40,3 +40,17 @@ class KeywordDetail(generic.DetailView):
     slug_field = 'codname'
     slug_url_kwarg = 'codname'
     template_name = 'website/keyword_detail.html'
+
+
+class CategoryList(generic.ListView):
+    model = Category
+    context_object_name = 'categorys'
+    template_name = 'website/category_list.html'
+
+
+class CategoryDetail(generic.DetailView):
+    model = Category
+    context_object_name = 'category'
+    slug_field = 'name'
+    slug_url_kwarg = 'name'
+    template_name = 'website/category_detail.html'

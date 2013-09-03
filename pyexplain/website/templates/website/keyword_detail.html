@@ -1,8 +1,22 @@
 {% extends 'website/base.html' %}
 {% load utils_tags %}
 {% block body %}
-<div class="jumbotron">
-  <h1>{{ keyword.codname }} <small class="text-muted">{{ keyword.category.name }}</small></h1>
-  <p>{{ keyword.description|to_html }}</p>
+<div class="row well">
+
+  <div class="col-xs-9">
+    <h1>{{ keyword.codname }}
+      <small class="text-muted">
+        <a href="{% url 'website:category_detail' keyword.category.name %}">{{ keyword.category.get_typo_display }}</a>
+      </small>
+    </h1>
+    <p>{{ keyword.description|to_html }}</p>
+  </div>
+  
+  <div class="col-xs-3">
+    {% if keyword.doc_url %}
+      <a href="{{ keyword.doc_url }}" target="_blank"><i class="icon-book"></i> Documentação oficial</a>
+    {% endif %}
+  </div>
+
 </div>
 {% endblock %}

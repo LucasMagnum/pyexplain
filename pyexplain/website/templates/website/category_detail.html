@@ -1,0 +1,22 @@
+{% extends 'website/base.html' %}
+{% load utils_tags %}
+
+{% block body %}
+<div class="row well">
+
+  <h1>{{ category.get_typo_display }} <small class="text-muted">{{ category.keywords.count }} keyword(s) registrado</small></h1>
+  <p>{{ category.description|to_html }}</p>
+
+  {% if category.keywords.all %}
+  <h3>Keywords</h3>
+    <ul class="list-inline">
+    {% for keyword in category.keywords.all %}
+      <li class="col-xs-4 col-sm-2">
+        <a href="{% url 'website:keyword_detail' keyword.codname %}">{{ keyword }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+
+</div>
+{% endblock %}
