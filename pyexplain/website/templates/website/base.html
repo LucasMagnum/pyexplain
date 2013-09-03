@@ -1,4 +1,7 @@
 {% load staticfiles %}
+{% load selectable_tags %}
+{% include_ui_theme %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -10,6 +13,7 @@
 
     <link href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/cosmo/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    {{ form_search.media.css }}
 
     <style type="text/css">
       body {padding-top: 70px;}
@@ -36,6 +40,11 @@
               <a href="{% url 'website:category_list' %}">Categorias</a>
             </li>
           </ul>
+         <form class="navbar-form navbar-right">
+            <div class="form-group">
+              {{ form_search.keyword }}
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -46,9 +55,21 @@
 
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script src="{% static 'website/js/common.js' %}"></script>
+    {{ form_search.media.js }}
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $('.ui-autocomplete-input').bind('djselectableselect', function(event, ui) {
+              if (ui.item.url != undefined){
+                window.location.href = ui.item.url;
+              }
+          });
+      });
+    </script>
 
     {% block scripts %}{% endblock %}
-    
+
   </body>
 </html>

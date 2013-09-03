@@ -1,6 +1,7 @@
 # coding: utf-8
 import json
 from django.views import generic
+from django import http
 
 from .models import Keyword, Category
 from .utils import queryset_dump
@@ -54,3 +55,10 @@ class CategoryDetail(generic.DetailView):
     slug_field = 'name'
     slug_url_kwarg = 'name'
     template_name = 'website/category_detail.html'
+
+
+def ajax_keywords(request):
+    data = {
+        'success': True,
+    }
+    return http.HttpResponse(json.dumps(data), mimetype="application/json")

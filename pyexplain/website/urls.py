@@ -8,5 +8,10 @@ urlpatterns = patterns('',
     url(r'^keyword/(?P<codname>\w+)/$', views.KeywordDetail.as_view(), name='keyword_detail'),
 
     url(r'^category/$', views.CategoryList.as_view(), name='category_list'),
-    url(r'^category/(?P<name>\w+)/$', views.CategoryDetail.as_view(), name='category_detail')
+    url(r'^category/(?P<name>\w+)/$', views.CategoryDetail.as_view(), name='category_detail'),
+
+
+    # ajax results
+    url(r'^ajax/keyword/$', views.ajax_keywords, name='ajax_keywords_search'),
+
 )

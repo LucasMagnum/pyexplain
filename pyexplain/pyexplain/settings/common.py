@@ -1,4 +1,4 @@
-# Common settings 
+# Common settings
 import os
 
 
@@ -43,6 +43,14 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
+
+    # local processors
+    'website.context_processors.form_search',
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -66,7 +74,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    
+
+    # external apps
+    'selectable',
+
     # local apps
     'website',
 )
