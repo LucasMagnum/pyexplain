@@ -1,3 +1,4 @@
 Django==1.5.2
 # mysql wrapper for python
 MySQL-python==1.2.4
+django-selectable==0.7.0
