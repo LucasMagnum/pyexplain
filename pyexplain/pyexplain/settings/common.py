@@ -15,7 +15,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('EXPLAIN_DB'),
         'USER': os.environ.get('EXPLAIN_DB_USER'),
-        'PASSWORD': os.environ.get('EXPLAIN_PASS')
+        'PASSWORD': os.environ.get('EXPLAIN_DB_PASS')
     }
 }
 
