@@ -1,4 +1,4 @@
-PyExplain
+[PyExplain](http://pyexplain.com.br/)
 =========
 
 PyExplain tem como objetivo facilitar aos usuários iniciantes, entender 
@@ -17,7 +17,7 @@ Não é um interpretador de código, não verifica erros de sintaxe, nem tenta i
 Como é?
 =========
 
-Entre na página inicial, cole seu código Python:
+Entre na [página inicial](http://pyexplain.com.br/), cole seu código Python:
 ***
 
 ![Página inicial](http://s18.postimg.org/wjo3zkmrd/index.png)
