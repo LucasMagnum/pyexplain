@@ -89,12 +89,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
-<<<<<<< HEAD
     # external apps
     'selectable',
 
-=======
->>>>>>> master
     # local apps
     'website',
 )
