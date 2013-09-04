@@ -1,12 +1,11 @@
 {% extends 'website/base.html' %}
 {% load staticfiles utils_tags %}
 
-{% block head %}
-<link href="{% static 'website/css/prettify.css' %}" type="text/css" rel="stylesheet" />
-<link href="{% static 'website/css/base.css' %}" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="{% static 'website/js/prettify.js' %}"></script>
-
-{% endblock head %}
+{% block css %}
+  {{ block.super }}
+  <link href="{% static 'website/css/prettify.css' %}" type="text/css" rel="stylesheet" />
+  <link href="{% static 'base.css' %}" type="text/css" rel="stylesheet" />
+{% endblock css %}
 
 {% block body %}
   {% if code %}
@@ -37,7 +36,13 @@
   {% endif %}
 {% endblock body %}
 
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript" src="{% static 'website/js/prettify.js' %}"></script>
+{% endblock javascript %}
+
 {% block scripts %}
+{{ block.super }}
 <script type="text/javascript">
   keywords = JSON.parse("{{ keywords|escapejs }}");
   categorys = JSON.parse("{{ categorys_json|escapejs }}");

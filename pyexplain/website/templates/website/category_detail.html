@@ -4,7 +4,7 @@
 {% block body %}
 <div class="row well">
 
-  <h1>{{ category.get_typo_display }} <small class="text-muted">{{ category.keywords.count }} keyword(s) registrado</small></h1>
+  <h1>{{ category.get_typo_display }} <small class="text-muted">{{ category.keywords.count }} keyword(s) registrado(s)</small></h1>
   <p>{{ category.description|to_html }}</p>
 
   {% if category.keywords.all %}

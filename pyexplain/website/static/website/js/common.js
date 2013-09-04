@@ -8,4 +8,11 @@ $(function(){
       }
     });
   });
+
+  $('.ui-autocomplete-input').bind('djselectableselect', function(event, ui) {
+    if (ui.item.url != undefined){
+      window.location.href = ui.item.url;
+    }
+  });
+
 });
