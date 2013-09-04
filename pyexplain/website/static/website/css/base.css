@@ -1,0 +1,9 @@
+/* reset the `a` color for prettify */
+pre a {color:inherit !important;}
+pre a:hover{color:inherit !important;}
+
+.popover{color:#000;}
+.popover-title{font-weight: bold;}
+.popover-content{word-break:break-word;}
+
+

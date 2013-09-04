@@ -1,6 +1,8 @@
 # Common settings
 import os
 
+VERSION = "0.1.1"
+
 PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = False
@@ -87,9 +89,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
+<<<<<<< HEAD
     # external apps
     'selectable',
 
+=======
+>>>>>>> master
     # local apps
     'website',
 )
