@@ -10,33 +10,59 @@
 
     <link href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/cosmo/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{% static 'base.css' %}" type="text/css" rel="stylesheet" />
+
     {% block css %}{% endblock css %}
-    <style type="text/css">
-      body {padding-top: 70px;}
-    </style>
     {% block head %}{% endblock %}
   </head>
 
   <body>
-
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{% url 'website:index' %}">PyExplain</a>
-        </div>
-          <div class="navbar-collapse collapse">
-            {% block navbar %}{% endblock navbar %}
+    <div id="wrap">
+      <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'website:index' %}">PyExplain</a>
           </div>
+            <div class="navbar-collapse collapse">
+              {% block navbar %}{% endblock navbar %}
+            </div>
+        </div>
+      </div>
+
+      <div class="container">
+        {% block body %}{% endblock %}
       </div>
     </div>
 
-    <div class="container">
-      {% block body %}{% endblock %}
+    <div id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6">
+            <img src="https://0.gravatar.com/avatar/bff12d01ae0f16023be18b09abfe4251?d=https%3A%2F%2Fidenticons.github.com%2F768b836c37b35d850ccb7dadcfadcf14.png&s=420" width="80%">
+            <ul class="list-inline">
+              <li><a href="http://github.com/LucasMagnum"><i class="icon-github"></i></a></li>
+              <li><a href="https://www.facebook.com/lmloliveira"><i class="icon-facebook"></i></a></li>
+              <li><a href="https://twitter.com/lucasmagn"><i class="icon-twitter"></i></a></li>
+            </ul>
+          </div>
+          <div class="col-xs-6">
+            <ul class="list-unstyled pull-right">
+              <li><a href="https://github.com/LucasMagnum/pyexplain">GitHub</a></li>
+              <li><a href="https://www.facebook.com/pages/Pyexplain/162355550635815?ref=hl">Facebook</a></li>
+              <li><a href="http://lucasmagnum.github.io/pyexplain/">Sobre</a></li>
+              <li><a href="mailto:contato@pyexplain.com.br">Contato</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <p align="center">Desenvolvido por <a href="mailto:contato@lucasmagnum.com.br">Lucas Magnum</a></p>
+        </div>
+      </div>
     </div>
 
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>

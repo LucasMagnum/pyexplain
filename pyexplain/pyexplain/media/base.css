@@ -1,9 +1,36 @@
-/* reset the `a` color for prettify */
-pre a {color:inherit !important;}
-pre a:hover{color:inherit !important;}
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+body {padding-top:70px;}
 
-.popover{color:#000;}
-.popover-title{font-weight: bold;}
-.popover-content{word-break:break-word;}
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
 
+/* Set the fixed height of the footer here */
+#footer {
+  height: auto;
+  background-color: rgb(51, 51, 51);
+  color: #FFF;
+  margin-top:10px;
+  padding-top:10px;
+  font-weight: bold;
+}
 
+#footer a{
+  color:inherit;
+}
+
+#footer img{
+  max-width: 150px;
+  max-height: 150px;
+}
