@@ -2,5 +2,11 @@
 {% block body %}
   <h1>Erro no servidor</h1>
   <p>Ocorreu um erro ao processar esta página, aguarde alguns minutos e tente novamente.</p>
+
+  {% if DEBUG %}
+    <p>{{ exception_value }}</p>
+    <p>{{ value }}</p>
+    <p>{{ tb }}</p>
+  {% endif %}
 {% endblock %}
 

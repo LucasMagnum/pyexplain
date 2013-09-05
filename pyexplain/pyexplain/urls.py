@@ -26,3 +26,22 @@ if settings.DEBUG:
  urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
+def handler500(request):
+    """500 error handler which includes ``request`` in the context.
+
+    Templates: `500.html`
+    Context: None
+    """
+    import sys,traceback
+    from django.template import Context, loader
+    from django.http import HttpResponseServerError
+
+    t = loader.get_template('500.html')
+    typo, value, tb = sys.exc_info()
+
+    return HttpResponseServerError(t.render(Context({
+        'exception_value': value,
+        'DEBUG': settings.TEMPLATE_DEBUG,
+        'value':typo,
+        'tb':traceback.format_exception(typo, value, tb)})))
+
