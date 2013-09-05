@@ -90,6 +90,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'suit',  # django-suit app placed before admin
     'django.contrib.admin',
 
     # external apps
@@ -121,4 +123,10 @@ LOGGING = {
             'propagate': True,
         },
     }
+}
+
+
+# settings for django-suit
+SUIT_CONFIG = {
+    'ADMIN_NAME': 'PyExplain'
 }
