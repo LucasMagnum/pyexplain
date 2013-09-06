@@ -47,6 +47,7 @@ class Keyword(models.Model):
 
     class Meta:
         ordering = ['codname']
+        unique_together = ('codname', 'category')
 
     def __unicode__(self):
         return self.codname
@@ -62,7 +63,6 @@ class Keyword(models.Model):
         if self.category.typo == Category.standard:
             return 'http://docs.python.org/2/library/%s.html' % self.codname
         return
-
 
     @property
     def desc(self):
