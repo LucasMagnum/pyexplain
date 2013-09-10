@@ -1,9 +1,10 @@
 # Common settings
 import os
+import unipath
 
 VERSION = "0.1.1"
 
-PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
+PROJECT_DIR = unipath.Path(__file__).ancestor(2) #os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -35,10 +36,10 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
+MEDIA_ROOT = PROJECT_DIR.child('media') #os.path.join(PROJECT_DIR, 'media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+STATIC_ROOT = PROJECT_DIR.child('static') #os.path.join(PROJECT_DIR, 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
@@ -80,7 +81,7 @@ ROOT_URLCONF = 'pyexplain.urls'
 WSGI_APPLICATION = 'pyexplain.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_DIR, 'templates'),
+    PROJECT_DIR.child('templates') #os.path.join(PROJECT_DIR, 'templates'),
 )
 
 INSTALLED_APPS = (

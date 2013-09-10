@@ -5,3 +5,6 @@ django-selectable==0.7.0
 
 # for django admin interface
 djang-suit==0.2.4
+
+# for manage path's
+unipath==1.0
