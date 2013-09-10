@@ -1,10 +1,16 @@
 Django==1.5.2
+
 # mysql wrapper for python
 MySQL-python==1.2.4
+
+# for autocompletes
 django-selectable==0.7.0
 
 # for django admin interface
-djang-suit==0.2.4
+django-suit==0.2.4
 
-# for manage path's
+# for manage path's  -- https://github.com/mikeorr/Unipath
 unipath==1.0
+
+# south for migrations
+south==0.8.2

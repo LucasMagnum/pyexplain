@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 
     # external apps
     url(r'^selectable/', include('selectable.urls')),
+    url(r'^social/', include('social.apps.django_app.urls', namespace='social')),
 
     # django apps
     url(r'^admin/', include(admin.site.urls)),

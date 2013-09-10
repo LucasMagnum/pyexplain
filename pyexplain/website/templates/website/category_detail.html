@@ -4,14 +4,16 @@
 {% block body %}
 <div class="row well">
 
-  <h1>{{ category.name }} <small class="text-muted">{{ category.keywords.count }} keyword(s) registrado(s)</small></h1>
+  <h1>{{ category.name }}
+    <small class="text-muted">{{ category.keywords.count }} keyword(s) registrado(s)</small>
+  </h1>
   <p>{{ category.description|to_html }}</p>
 
   {% if category.keywords.all %}
   <h3>Keywords</h3>
     <ul class="list-inline">
     {% for keyword in category.keywords.all %}
-      <li class="col-xs-4 col-sm-2">
+      <li class="col-xs-3 col-sm-3">
         <a href="{% url 'website:keyword_detail' keyword.category.slug keyword.slug %}">{{ keyword }}</a>
       </li>
     {% endfor %}

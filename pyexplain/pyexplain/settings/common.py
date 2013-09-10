@@ -65,6 +65,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.core.context_processors.static',
 
+    # external processors
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+
     # local processors
     'website.context_processors.form_search',
 )
@@ -97,6 +101,8 @@ INSTALLED_APPS = (
 
     # external apps
     'selectable',
+    'south',
+    'social.apps.django_app.default',
 
     # local apps
     'website',
@@ -126,8 +132,10 @@ LOGGING = {
     }
 }
 
-
 # settings for django-suit
 SUIT_CONFIG = {
     'ADMIN_NAME': 'PyExplain'
 }
+
+
+from .social import *
