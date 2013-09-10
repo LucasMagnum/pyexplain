@@ -6,12 +6,12 @@
   <div class="col-xs-9">
     <h1>{{ keyword.codname }}
       <small class="text-muted">
-        <a href="{% url 'website:category_detail' keyword.category.name %}">{{ keyword.category.get_typo_display }}</a>
+        <a href="{% url 'website:category_detail' keyword.category.slug %}">{{ keyword.category.name }}</a>
       </small>
     </h1>
     <p>{{ keyword.description|to_html }}</p>
   </div>
-  
+
   <div class="col-xs-3">
     {% if keyword.doc_url %}
       <a href="{{ keyword.doc_url }}" target="_blank"><i class="icon-book"></i> Documentação oficial</a>

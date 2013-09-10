@@ -1,12 +1,31 @@
 # coding: utf-8
 from django.db import models
 from django.core.urlresolvers import reverse
-from django.template.defaultfilters import truncatechars
+from django.core.exceptions import ImproperlyConfigured
+from django.template.defaultfilters import truncatechars, slugify
 
 from .templatetags.utils_tags import to_html
 
 
-class Category(models.Model):
+class SlugModel(models.Model):
+    slug = models.SlugField(max_length=100, blank=True, editable=False)
+
+    class Meta:
+        abstract = True
+
+    def save(self, *args, **kwargs):
+        slug_field = getattr(self, 'slug_field')
+
+        if slug_field is None:
+            raise ImproperlyConfigured(u'É necessário definir um campo para o slug')
+
+        slug_value = getattr(self, slug_field)
+        self.slug = slugify(slug_value)
+
+        super(SlugModel, self).save(*args, **kwargs)
+
+
+class Category(SlugModel):
     keyword = 'keywords'
     builtin = 'builtin'
     standard = 'standard'
@@ -16,9 +35,11 @@ class Category(models.Model):
         (builtin, u'Funções embutidas'),
         (standard, u'Biblioteca padrão'),
     )
-    name = models.CharField('Nome', max_length=150)
+    name = models.CharField('Nome', max_length=150, unique=True)
     description = models.TextField(u'Descrição', blank=True)
     typo = models.CharField('Tipo', max_length=20, choices=TYPE_CHOICES)
+
+    slug_field = 'name' # qual campo irá receber o slug
 
     class Meta:
         verbose_name = 'Categoria'
@@ -40,10 +61,12 @@ class Category(models.Model):
         }
 
 
-class Keyword(models.Model):
+class Keyword(SlugModel):
     codname = models.CharField(u'Código/Nome', max_length=150)
     description = models.TextField(u'Descrição', blank=True)
     category = models.ForeignKey(Category, related_name='keywords')
+
+    slug_field = 'codname' # qual campo irá receber o slug
 
     class Meta:
         ordering = ['codname']
@@ -54,7 +77,8 @@ class Keyword(models.Model):
 
     @property
     def url(self):
-        return reverse('website:keyword_detail', kwargs={'codname': self.codname})
+        return reverse('website:keyword_detail',
+            kwargs={'category_slug': self.category.slug, 'key_slug': self.slug})
 
     @property
     def doc_url(self):

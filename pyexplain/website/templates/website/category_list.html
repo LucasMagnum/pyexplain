@@ -9,12 +9,12 @@
     <div class="panel panel-primary col-xs-12 col-sm-4">
       <div class="panel-heading">
         <h3 class="panel-title">
-          <a href="{% url 'website:category_detail' category.name %}">{{ category.get_typo_display }}</a>
+          <a href="{% url 'website:category_detail' category.slug %}">{{ category.name }}</a>
         </h3>
       </div>
       <div class="panel-body">
         <p class="text-muted">{{ category.description|to_html }}</p>
-        <p>{{ category.keywords.count }} <a href="{% url 'website:category_detail' category.name %}">keyword(s)</a> mapeada(s)</p>
+        <p>{{ category.keywords.count }} <a href="{% url 'website:category_detail' category.slug %}">keyword(s)</a> mapeada(s)</p>
       </div>
     </div>
   {% endfor %}

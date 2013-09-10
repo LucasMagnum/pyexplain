@@ -38,9 +38,13 @@ class ExplainView(generic.TemplateView):
 class KeywordDetail(generic.DetailView):
     model = Keyword
     context_object_name = 'keyword'
-    slug_field = 'codname'
-    slug_url_kwarg = 'codname'
     template_name = 'website/keyword_detail.html'
+
+    slug_url_kwarg = 'key_slug'
+
+    def get_queryset(self):
+        category_slug = self.kwargs.get('category_slug')
+        return self.model.objects.filter(category__slug=category_slug)
 
 
 class CategoryList(generic.ListView):
@@ -52,6 +56,4 @@ class CategoryList(generic.ListView):
 class CategoryDetail(generic.DetailView):
     model = Category
     context_object_name = 'category'
-    slug_field = 'name'
-    slug_url_kwarg = 'name'
     template_name = 'website/category_detail.html'
