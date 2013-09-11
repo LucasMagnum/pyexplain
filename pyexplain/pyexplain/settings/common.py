@@ -100,12 +100,14 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     # external apps
-    'selectable',
-    'south',
-    'social.apps.django_app.default',
+    'selectable', # autocompletes
+    'south', # south for migrations
+    'social.apps.django_app.default', # social auth connections
+    'bootstrap3', # bootstrap-toolkit 3
 
     # local apps
     'website',
+    'attach',
     'attach.links',
     'attach.examples',
 )

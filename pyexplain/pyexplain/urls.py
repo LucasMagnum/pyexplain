@@ -10,6 +10,7 @@ urlpatterns = patterns('',
 
     # local apps
     url(r'^', include('website.urls', namespace='website')),
+    url(r'^', include('attach.links.urls', namespace='links')),
 
     # external apps
     url(r'^selectable/', include('selectable.urls')),

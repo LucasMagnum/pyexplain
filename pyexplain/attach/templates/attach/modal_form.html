@@ -1,0 +1,25 @@
+{% load bootstrap3 %}
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title">
+        {% block title %}{{ form.instance.id|yesno:"Editar, Adicionar"}}{% endblock title %}
+      </h4>
+    </div>
+    {% block body %}
+    <form class="form modal-form" method="POST" action="{{ request.path }}">
+      {% csrf_token %}
+      <div class="modal-body">
+        {% bootstrap_form form %}
+      </div>
+      <div class="modal-footer">
+        {% bootstrap_form_buttons %}
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-success submit-modal-form"><i class="icon-ok"></i> Salvar</button>
+        {% end_bootstrap_form_buttons %}
+      </div>
+    </form>
+    {% endblock body %}
+  </div>
+</div>

@@ -31,6 +31,7 @@
   {% endif %}
 
 </div>
+
 <div class="row">
 
   <div class="col-xs-12 col-sm-9">
@@ -53,30 +54,97 @@
     {% else %}
       <div class="text-primary">Nenhum exemplo cadastrado.</div>
     {% endif %}
-
   </div>
 
   <div class="col-xs-12 col-sm-3">
     <h3> Links
-      {% if user.is_authenticated %}
+      {% if user.is_authenticated and keyword.can_add_links %}
       <small class="pull-right">
-        <a href="#" class="btn btn-default btn-xs"><i class="icon-external-link"></i> Enviar link</a>
+        <a href="{% url 'links:create' keyword|meta:'app_label' keyword|meta:'module_name' keyword.id %}" class="btn btn-default btn-xs open-modal">
+          <i class="icon-external-link"></i> Enviar link
+        </a>
       </small>
       {% endif %}
     </h3>
 
-    {% if keyword.links.all %}
-      {% for link in keyword.links.all %}
-        <p>
-          <a target="_blank" href="{{ link.url }}" title="{{ link.description }}">
-          <i class="icon-link"></i> {{ link.name }}
-          </a>
-        </p>
-      {% endfor %}
-    {% else %}
-      <div class="text-primary">Nenhum link cadastrado.</div>
-    {% endif %}
+    <div id="links-list">
+      {% if keyword.links.all %}
+        {% for link in keyword.links.all %}
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <a target="_blank" title="{{ link.description }}" href="{{ link.url }}">
+                <i class="icon-link"></i> {{ link.name }}
+              </a>
+            </div>
+            {% if link.description %}
+            <div class="panel-body">
+              <i class="text-muted">{{ link.description|truncatechars:"100" }}</i>
+            </div>
+            {% endif %}
+            <div class="panel-footer">
+              <small class="text-muted">
+                {{ link.added|date:"d/m/Y"}} - {{ link.added_by.first_name }}
+              </small> <br>
+
+              {% if link.added_by == user %}
+                <small class="text-muted">
+                  <a href="{% url 'links:update' link.id %}" class="open-modal">
+                    <i class="icon-pencil"></i> Editar
+                  </a>
+                </small>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="text-primary">Nenhum link cadastrado.</div>
+      {% endif %}
+    </div>
   </div>
 
 </div>
 {% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+
+<script type="text/javascript">
+  var keyword_modal = $('<div class="modal" role="dialog"></div>');
+  $(function(){
+
+    $(document).on('click', '.open-modal', function(event){
+      var url = $(this).attr('href');
+      event.preventDefault();
+
+      keyword_modal.load(url, function(){
+        $(this).modal('show');
+      });
+
+    });
+
+    $(document).on('submit', '.modal-form', function(event){
+      $.ajax({
+        type: $(this).attr('method'),
+        url: this.action,
+        data: $(this).serialize(),
+        context: this,
+        success: function(data, status, xhr) {
+          if (!data['success']){
+            keyword_modal.html(data);
+          } else {
+            target = data['target'];
+            $(target).load('{{ request.path }} ' + target);
+            keyword_modal.modal('hide');
+          }
+        },
+        error: function(){
+          alert('Não foi possível enviar sua solicitação. Tente novamente mais tarde.');
+          keyword_modal.modal('hide');
+        }
+      });
+      event.preventDefault();
+    });
+
+  });
+</script>
+{% endblock scripts %}

@@ -5,10 +5,11 @@ from django.core.urlresolvers import reverse
 from django.core.exceptions import ImproperlyConfigured
 from django.template.defaultfilters import truncatechars, slugify
 
-from attach.links.models import Link
+from attach.links.models import Link, LINKS_PER_OBJ
 from attach.examples.models import Example
 
 from .templatetags.utils_tags import to_html
+
 
 
 class SlugModel(models.Model):
@@ -88,12 +89,11 @@ class Keyword(SlugModel):
             kwargs={'category_slug': self.category.slug, 'key_slug': self.slug})
 
     @property
-    def doc_url(self):
-        if self.category.typo == Category.builtin:
-            return 'http://docs.python.org/2/library/functions.html#%s' % self.codname
-        if self.category.typo == Category.standard:
-            return 'http://docs.python.org/2/library/%s.html' % self.codname
-        return
+    def can_add_links(self):
+        """ Retornar True ou False se permitir
+            adicionar mais links ou não
+        """
+        return self.links.count() <= LINKS_PER_OBJ
 
     @property
     def desc(self):
