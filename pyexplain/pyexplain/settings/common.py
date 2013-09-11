@@ -2,7 +2,7 @@
 import os
 import unipath
 
-VERSION = "0.1.1"
+VERSION = "0.1.2"
 
 PROJECT_DIR = unipath.Path(__file__).ancestor(2) #os.path.dirname(os.path.dirname(__file__))
 
