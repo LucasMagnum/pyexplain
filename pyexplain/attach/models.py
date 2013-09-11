@@ -31,3 +31,9 @@ class ContentTypeModel(CreateModel):
     class Meta:
         abstract = True
 
+    def delete_by(self, user):
+        """
+            Deleta o item se for criador ou super user.
+        """
+        if user.is_superuser or user is self.added_by:
+            self.delete()

@@ -4,9 +4,6 @@ from django.db import models
 from attach.models import ContentTypeModel
 
 
-LINKS_PER_OBJ = 6 # maximo de links por objetos
-
-
 class Link(ContentTypeModel):
     """
         Links serão adicionados como referências externas para ajudar no

@@ -1,5 +1,5 @@
 {% extends 'website/base.html' %}
-{% load utils_tags %}
+{% load utils_tags staticfiles %}
 {% block body %}
 
 <div class="row">
@@ -36,7 +36,7 @@
 
   <div class="col-xs-12 col-sm-9">
     <h3> Exemplos
-      {% if user.is_authenticated %}
+      {% if user.is_authenticated and keyword.can_add_examples %}
       <small>
         <a href="#" class="btn btn-default btn-xs"><i class="icon-code"></i> Enviar exemplo</a>
       </small>
@@ -107,44 +107,5 @@
 
 {% block scripts %}
 {{ block.super }}
-
-<script type="text/javascript">
-  var keyword_modal = $('<div class="modal" role="dialog"></div>');
-  $(function(){
-
-    $(document).on('click', '.open-modal', function(event){
-      var url = $(this).attr('href');
-      event.preventDefault();
-
-      keyword_modal.load(url, function(){
-        $(this).modal('show');
-      });
-
-    });
-
-    $(document).on('submit', '.modal-form', function(event){
-      $.ajax({
-        type: $(this).attr('method'),
-        url: this.action,
-        data: $(this).serialize(),
-        context: this,
-        success: function(data, status, xhr) {
-          if (!data['success']){
-            keyword_modal.html(data);
-          } else {
-            target = data['target'];
-            $(target).load('{{ request.path }} ' + target);
-            keyword_modal.modal('hide');
-          }
-        },
-        error: function(){
-          alert('Não foi possível enviar sua solicitação. Tente novamente mais tarde.');
-          keyword_modal.modal('hide');
-        }
-      });
-      event.preventDefault();
-    });
-
-  });
-</script>
+<script type="text/javascript" src="{% static 'attach/js/modal_form.js' %}"></script>
 {% endblock scripts %}

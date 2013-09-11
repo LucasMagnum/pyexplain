@@ -5,11 +5,12 @@ from django.core.urlresolvers import reverse
 from django.core.exceptions import ImproperlyConfigured
 from django.template.defaultfilters import truncatechars, slugify
 
-from attach.links.models import Link, LINKS_PER_OBJ
+from attach.links.models import Link
 from attach.examples.models import Example
 
 from .templatetags.utils_tags import to_html
 
+ATTACHS_PER_OBJ = 6 # Maximo de attachs por objetos
 
 
 class SlugModel(models.Model):
@@ -93,7 +94,14 @@ class Keyword(SlugModel):
         """ Retornar True ou False se permitir
             adicionar mais links ou não
         """
-        return self.links.count() <= LINKS_PER_OBJ
+        return self.links.count() <= ATTACHS_PER_OBJ
+
+    @property
+    def can_add_examples(self):
+        """ Retornar True ou False se permitir
+            adicionar mais exemplos ou não
+        """
+        return self.examples.count() <= ATTACHS_PER_OBJ
 
     @property
     def desc(self):
