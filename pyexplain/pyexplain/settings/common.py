@@ -106,6 +106,8 @@ INSTALLED_APPS = (
 
     # local apps
     'website',
+    'attach.links',
+    'attach.examples',
 )
 
 LOGGING = {
@@ -137,5 +139,7 @@ SUIT_CONFIG = {
     'ADMIN_NAME': 'PyExplain'
 }
 
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 from .social import *

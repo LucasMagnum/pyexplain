@@ -1,8 +1,12 @@
 # coding: utf-8
 from django.db import models
+from django.contrib.contenttypes import generic
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ImproperlyConfigured
 from django.template.defaultfilters import truncatechars, slugify
+
+from attach.links.models import Link
+from attach.examples.models import Example
 
 from .templatetags.utils_tags import to_html
 
@@ -65,6 +69,9 @@ class Keyword(SlugModel):
     codname = models.CharField(u'Código/Nome', max_length=150)
     description = models.TextField(u'Descrição', blank=True)
     category = models.ForeignKey(Category, related_name='keywords')
+
+    links = generic.GenericRelation(Link, content_type_field='model')
+    examples = generic.GenericRelation(Example, content_type_field='model')
 
     slug_field = 'codname' # qual campo irá receber o slug
 

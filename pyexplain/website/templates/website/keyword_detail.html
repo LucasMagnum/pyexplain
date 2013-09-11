@@ -1,9 +1,10 @@
 {% extends 'website/base.html' %}
 {% load utils_tags %}
 {% block body %}
-<div class="row well">
 
-  <div class="col-xs-9">
+<div class="row">
+
+  <div class="col-xs-12 col-sm-9">
     <h1>{{ keyword.codname }}
       <small class="text-muted">
         <a href="{% url 'website:category_detail' keyword.category.slug %}">{{ keyword.category.name }}</a>
@@ -12,9 +13,68 @@
     <p>{{ keyword.description|to_html }}</p>
   </div>
 
-  <div class="col-xs-3">
-    {% if keyword.doc_url %}
-      <a href="{{ keyword.doc_url }}" target="_blank"><i class="icon-book"></i> Documentação oficial</a>
+  {% if not user.is_authenticated %}
+    <div class="col-xs-12 col-sm-3 alert alert-success">
+      <p align="center">Você pode colaborar!<br>
+        Envie links e exemplos. <br>
+        <a href="{% url 'social:begin' 'github' %}?next={{ request.path }}" class="btn btn-default btn-sm">
+          <i class="icon-github"></i> Logar com Github
+        </a>
+      </p>
+    </div>
+  {% else %}
+    <div class="col-xs-12 col-sm-3 well">
+      <p class="text-muted">
+        Logado como <strong>{{ user.first_name }}</strong>.
+      </p>
+    </div>
+  {% endif %}
+
+</div>
+<div class="row">
+
+  <div class="col-xs-12 col-sm-9">
+    <h3> Exemplos
+      {% if user.is_authenticated %}
+      <small>
+        <a href="#" class="btn btn-default btn-xs"><i class="icon-code"></i> Enviar exemplo</a>
+      </small>
+      {% endif %}
+    </h3>
+
+    {% if keyword.examples.all %}
+      {% for link in keyword.examples.all %}
+        <p>
+          <a target="_blank" href="{{ link.url }}" title="{{ link.description }}">
+          <i class="icon-link"></i> {{ link.name }}
+          </a>
+        </p>
+      {% endfor %}
+    {% else %}
+      <div class="text-primary">Nenhum exemplo cadastrado.</div>
+    {% endif %}
+
+  </div>
+
+  <div class="col-xs-12 col-sm-3">
+    <h3> Links
+      {% if user.is_authenticated %}
+      <small class="pull-right">
+        <a href="#" class="btn btn-default btn-xs"><i class="icon-external-link"></i> Enviar link</a>
+      </small>
+      {% endif %}
+    </h3>
+
+    {% if keyword.links.all %}
+      {% for link in keyword.links.all %}
+        <p>
+          <a target="_blank" href="{{ link.url }}" title="{{ link.description }}">
+          <i class="icon-link"></i> {{ link.name }}
+          </a>
+        </p>
+      {% endfor %}
+    {% else %}
+      <div class="text-primary">Nenhum link cadastrado.</div>
     {% endif %}
   </div>
 
