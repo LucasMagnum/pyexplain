@@ -1,14 +1,36 @@
 {% extends 'website/base.html' %}
+{% load staticfiles %}
+{% block css %}
+  {{ block.super }}
+  <link href="{% static 'website/css/trip.min.css' %}" type="text/css" rel="stylesheet" />
+{% endblock css %}
 
 {% block body %}
-  <form class="form form-horizontal form-group" method="POST" action="{% url 'website:explain' %}">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-primary pull-right col-xs-12 col-sm-1" href="#">
-      <i class="icon-play"></i>
-    </button>
-    <textarea class="col-md-12 col-xs-12 input-required form-control" rows="15" name="code" placeholder="Cole seu código aqui"></textarea>
-    <button type="submit" class="btn btn-primary pull-right col-xs-12 col-sm-1" href="#">
-      <i class="icon-play"></i>
-    </button>
-  </form>
+
+<div class="row">
+  <div class="col-xs-12">
+    <form class="form form-horizontal form-group" method="POST" action="{% url 'website:explain' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-primary pull-right col-xs-12 col-sm-2" href="#">
+        <i class="icon-play"></i>
+      </button>
+      <textarea class="col-md-12 col-xs-12 input-required form-control" rows="15" name="code" placeholder="Cole seu código aqui"></textarea>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="alert alert-dismissable alert-success">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+       Tem dúvida? <a href="#" class="alert-link show_tour">saiba como usar</a>.
+    </div>
+  </div>
+</div>
+
 {% endblock %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript" src="{% static 'website/js/trip.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'website/js/tour_site.js' %}"></script>
+{% endblock javascript %}
