@@ -57,8 +57,11 @@ class ModalContentTypeMixin(ContentTypeMixin):
         Responsável pelo tratamento das views de criar, editar e remover
         ContentType utilizando modal forms.
     """
+    template_name = 'attach/modal_form.html'
+
     _target = None # HTML selector que será atualizada após a execução
     _delete_obj = False # Flag para determinar se irá apagar ou não o obj
+
 
     @property
     def target(self):
@@ -67,20 +70,11 @@ class ModalContentTypeMixin(ContentTypeMixin):
             raise NotImplementedError(u'É necessário informar o target.')
         return self._target
 
-    def json_response(self):
-        """ Retornar json com resposta valida"""
-        data = {
-            'message': self.valid_message,
-            'status': 200,
-            'success': True,
-            'target': self.target,
-        }
-        return HttpResponse(json.dumps(data), content_type='application/json')
-
-    def post(self, request, *args, **kwargs):
-        """ Verificar se o submit foi para deletar """
-        self._delete_obj = '_delete' in request.POST
-        return super(ModalContentTypeMixin, self).post(request, *args, **kwargs)
+    def get_context_data(self, *args, **kwargs):
+        """ Adiciona o model no context """
+        context = super(ModalContentTypeMixin, self).get_context_data(*args, **kwargs)
+        context['model'] = self.model
+        return context
 
     def form_valid(self, form):
         """
@@ -99,3 +93,18 @@ class ModalContentTypeMixin(ContentTypeMixin):
             form.instance.delete_by(self.request.user)
 
         return self.json_response()
+
+    def json_response(self):
+        """ Retornar json com resposta valida"""
+        data = {
+            'message': self.valid_message,
+            'status': 200,
+            'success': True,
+            'target': self.target,
+        }
+        return HttpResponse(json.dumps(data), content_type='application/json')
+
+    def post(self, request, *args, **kwargs):
+        """ Verificar se o submit foi para deletar """
+        self._delete_obj = '_delete' in request.POST
+        return super(ModalContentTypeMixin, self).post(request, *args, **kwargs)

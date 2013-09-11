@@ -9,9 +9,8 @@ class Example(ContentTypeModel):
         Exemplos serão adicionados como pedaços de códigos
         para ajudar no entendimento do usuário sobre algum item.
     """
-    name = models.CharField(u'Nome', max_length=150)
-    url = models.URLField(max_length=200)
-    description = models.TextField(u'Descrição', blank=True)
+    name = models.CharField(u'Nome', max_length=150, blank=True)
+    code = models.TextField(u'Código')
 
     class Meta:
         verbose_name = 'Exemplo'

@@ -1,5 +1,12 @@
 {% extends 'website/base.html' %}
 {% load utils_tags staticfiles %}
+
+{% block css %}
+  {{ block.super }}
+  <link href="{% static 'website/css/prettify.css' %}" type="text/css" rel="stylesheet" />
+{% endblock css %}
+
+
 {% block body %}
 
 <div class="row">
@@ -34,29 +41,50 @@
 
 <div class="row">
 
-  <div class="col-xs-12 col-sm-9">
+  <div class="col-xs-12 col-sm-8">
     <h3> Exemplos
       {% if user.is_authenticated and keyword.can_add_examples %}
       <small>
-        <a href="#" class="btn btn-default btn-xs"><i class="icon-code"></i> Enviar exemplo</a>
+        <a href="{% url 'examples:create' keyword|meta:'app_label' keyword|meta:'module_name' keyword.id %}" class="btn btn-default btn-xs open-modal">
+          <i class="icon-code"></i> Enviar exemplo
+        </a>
       </small>
       {% endif %}
     </h3>
 
-    {% if keyword.examples.all %}
-      {% for link in keyword.examples.all %}
-        <p>
-          <a target="_blank" href="{{ link.url }}" title="{{ link.description }}">
-          <i class="icon-link"></i> {{ link.name }}
-          </a>
-        </p>
-      {% endfor %}
-    {% else %}
-      <div class="text-primary">Nenhum exemplo cadastrado.</div>
-    {% endif %}
+    <div id="examples-list">
+      {% if keyword.examples.all %}
+        {% for example in keyword.examples.all %}
+          <div class="panel panel-default">
+            {% if example.name %}
+            <div class="panel-heading">
+              <i class="icon-code"></i> {{ example.name }}
+            </div>
+            {% endif %}
+
+            <div class="panel-body">
+              <pre class="prettyprint linenums language-python skin-desert">{{ example.code }}</pre>
+            </div>
+
+            <div class="panel-footer">
+              <small class="text-muted">
+                {{ example.added|date:"d/m/Y"}} - {{ example.added_by.first_name }}
+                {% if example.added_by == user %}
+                  <a href="{% url 'examples:update' example.id %}" class="open-modal">
+                    Editar
+                  </a>
+                {% endif %}
+              </small>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="text-primary">Nenhum exemplo cadastrado.</div>
+      {% endif %}
+    </div>
   </div>
 
-  <div class="col-xs-12 col-sm-3">
+  <div class="col-xs-12 col-sm-4">
     <h3> Links
       {% if user.is_authenticated and keyword.can_add_links %}
       <small class="pull-right">
@@ -105,7 +133,17 @@
 </div>
 {% endblock %}
 
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript" src="{% static 'website/js/prettify.js' %}"></script>
+{% endblock javascript %}
+
 {% block scripts %}
 {{ block.super }}
+<script type="text/javascript">
+  $(function(){
+    prettyPrint();
+  });
+</script>
 <script type="text/javascript" src="{% static 'attach/js/modal_form.js' %}"></script>
 {% endblock scripts %}

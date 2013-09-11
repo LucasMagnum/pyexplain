@@ -1,10 +1,10 @@
-{% load bootstrap3 %}
+{% load bootstrap3 utils_tags %}
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       <h4 class="modal-title">
-        {% block title %}{{ form.instance.id|yesno:"Editar, Adicionar"}}{% endblock title %}
+        {% block title %}{{ form.instance.id|yesno:"Editar, Adicionar"}} {{ model|meta:"verbose_name"|title }}{% endblock title %}
       </h4>
     </div>
     {% block body %}
