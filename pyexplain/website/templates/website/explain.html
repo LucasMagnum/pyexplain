@@ -4,11 +4,14 @@
 {% block css %}
   {{ block.super }}
   <link href="{% static 'website/css/prettify.css' %}" type="text/css" rel="stylesheet" />
+  <link href="{% static 'website/css/trip.min.css' %}" type="text/css" rel="stylesheet" />
   <link href="{% static 'website/css/base.css' %}" type="text/css" rel="stylesheet" />
 {% endblock css %}
 
 {% block body %}
-  {% if code %}
+
+{% if code %}
+  <div class="row">
     <pre class="col-xs-12 col-sm-9 prettyprint linenums language-python skin-desert">{{ code }}</pre>
     <div class="col-xs-12 col-sm-3" id="analyzer">
       <h4>Análise do código</h4>
@@ -23,7 +26,7 @@
           </div>
         </dd>
         {% for category in categorys %}
-          <dt>{{ category.get_typo_display }}</dt>
+          <dt title="{{ category.description }}">{{ category.name }}</dt>
           <dd data-id="{{ category.id }}">
             <div class="progress progress-striped">
               <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100">
@@ -32,8 +35,21 @@
           </dd>
         {% endfor %}
       </dl>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="alert alert-dismissable alert-success">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+             Não entendeu? <a href="#" class="alert-link show_tour">explique-me</a>.
+          </div>
+        </div>
+      </div>
+
     </div>
-  {% endif %}
+  </div>
+
+{% endif %}
+
 {% endblock body %}
 
 {% block javascript %}
@@ -48,4 +64,6 @@
   categorys = JSON.parse("{{ categorys_json|escapejs }}");
 </script>
 <script type="text/javascript" src="{% static 'website/js/explain.js' %}"></script>
+<script type="text/javascript" src="{% static 'website/js/trip.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'website/js/tour_site.js' %}"></script>
 {% endblock scripts %}

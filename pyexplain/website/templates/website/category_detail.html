@@ -13,7 +13,7 @@
   <h3>Keywords</h3>
     <ul class="list-inline">
     {% for keyword in category.keywords.all %}
-      <li class="col-xs-3 col-sm-3">
+      <li class="col-xs-6 col-sm-3">
         <a href="{% url 'website:keyword_detail' keyword.category.slug keyword.slug %}">{{ keyword }}</a>
       </li>
     {% endfor %}

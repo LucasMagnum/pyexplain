@@ -37,8 +37,59 @@ function homeTour(){
   trip.start();
 }
 
+function explainTour(){
+  var trip = new Trip([
+    {
+      sel: $('pre.prettyprint'),
+      content: 'Aqui é onde seu código Python, \
+              é analisado. Basta passar o mouse sobre \
+              alguma palavra para visualizar as informações sobre ela.',
+      position: 's',
+      expose: true,
+    },
+    {
+      sel: $('#analyzer dl'),
+      content: 'Aqui estão algumas informações sobre seu código',
+      position: 's',
+      expose: true,
+    },
+    {
+      sel: $('#analyzer dl dt:first'),
+      content: 'O total de palavras que foram encontradas no seu código',
+      position: 's',
+      expose: true,
+    },
+    {
+      sel: $('#analyzer dl dt:nth(1)'),
+      content: 'Quantas palavras do seu código estão mapeadas no sistema',
+      position: 's',
+      expose: true,
+    },
+    {
+      sel: $('#analyzer dl dt:gt(1)'),
+      content: 'Aqui está a distribuição de palavras mapeadas em suas categorias.',
+      position: 'n',
+      expose: true,
+    },
+  ], {
+      delay : DELAY,
+      onTripChange : function(i, tripData) {
+        if (tripData.hasOwnProperty('func')){
+          func = tripData['func'];
+          obj = tripData['sel'];
+          func(obj);
+        }
+      }
+  });
+
+  trip.start();
+}
+
+
+
 tours = {
   '/': homeTour,
+  '/explain/': explainTour,
 }
 
 
