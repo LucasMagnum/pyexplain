@@ -1,0 +1,7 @@
+-r common.txt
+
+# discover tests (in Django 1.6 by default)
+django-discover-runner==1.0
+
+# measures code coverage, typically during test execution.
+coverage==3.6

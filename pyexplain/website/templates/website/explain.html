@@ -47,7 +47,12 @@
 
     </div>
   </div>
-
+{% else %}
+<div class="alert alert-error alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  É necessário enviar algum código para ser analisado.
+  <a href="{% url 'website:index' %}" class="alert-link">Voltar</a>.
+</div>
 {% endif %}
 
 {% endblock body %}

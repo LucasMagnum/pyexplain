@@ -4,6 +4,14 @@ import unipath
 
 VERSION = "0.1.2"
 
+#:  pyexplain -- PROJECT_ROOT
+#:      pyexplain > -- PROJECT_DIR
+#:          settings >
+#:              common.py
+#:      <app_name>
+#:      <app_name>
+
+PROJECT_ROOT = unipath.Path(__file__).ancestor(3)
 PROJECT_DIR = unipath.Path(__file__).ancestor(2) #os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = False
