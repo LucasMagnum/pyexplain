@@ -28,7 +28,7 @@ class RestrictUpdateMixin(object):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         obj = self.get_object()
-        if obj.added_by == self.request.user or request.user.is_superuser:
+        if obj.added_by == self.request.user or self.request.user.is_superuser:
             return super(RestrictUpdateMixin, self).dispatch(*args, **kwargs)
         raise PermissionDenied
 
@@ -39,7 +39,7 @@ class RestrictUpdateMixin(object):
 
 
 class ContentTypeMixin(LoginRequiredMixin):
-    _action = 'criado' # action que irá compor mensagem
+    _action = 'criado'  # action que irá compor mensagem
 
     @property
     def valid_message(self):
@@ -59,9 +59,8 @@ class ModalContentTypeMixin(ContentTypeMixin):
     """
     template_name = 'attach/modal_form.html'
 
-    _target = None # HTML selector que será atualizada após a execução
-    _delete_obj = False # Flag para determinar se irá apagar ou não o obj
-
+    _target = None  # HTML selector que será atualizada após a execução
+    _delete_obj = False  # Flag para determinar se irá apagar ou não o obj
 
     @property
     def target(self):

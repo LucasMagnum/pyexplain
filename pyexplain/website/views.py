@@ -1,7 +1,5 @@
 # coding: utf-8
-import json
 from django.views import generic
-from django import http
 
 from .models import Keyword, Category
 from .utils import queryset_dump

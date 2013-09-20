@@ -5,7 +5,7 @@
 
 """
 
-from .common import *
+from .dev import *
 
 
 #### TEST SETTINGS
