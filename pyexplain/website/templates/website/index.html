@@ -6,9 +6,15 @@
     <button type="submit" class="btn btn-primary pull-right col-xs-12 col-sm-1" href="#">
       <i class="icon-play"></i>
     </button>
-    <textarea class="col-md-12 col-xs-12 input-required form-control" rows="15" name="code" placeholder="Cole seu código aqui"></textarea>
+    <textarea id="editor" class="col-md-12 col-xs-12 input-required form-control" rows="15" name="code" placeholder="Cole seu código aqui"></textarea>
     <button type="submit" class="btn btn-primary pull-right col-xs-12 col-sm-1" href="#">
       <i class="icon-play"></i>
     </button>
   </form>
+  <script src="http://ace.c9.io/build/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script>
+    var editor = ace.edit("editor");
+    //editor.setTheme("ace/theme/monokai"); //opcional
+    editor.getSession().setMode("ace/mode/python");
+  </script>
 {% endblock %}
