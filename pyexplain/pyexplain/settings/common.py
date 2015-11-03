@@ -1,21 +1,14 @@
 # Common settings
+
 import os
 import unipath
 
 VERSION = "0.1.2"
 
-#:  pyexplain -- PROJECT_ROOT
-#:      pyexplain > -- PROJECT_DIR
-#:          settings >
-#:              common.py
-#:      <app_name>
-#:      <app_name>
-
 PROJECT_ROOT = unipath.Path(__file__).ancestor(3)
-PROJECT_DIR = unipath.Path(__file__).ancestor(2) #os.path.dirname(os.path.dirname(__file__))
+PROJECT_DIR = unipath.Path(__file__).ancestor(2)
 
 DEBUG = False
-TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Lucas Magnum', 'contato@lucasmagnum.com.br'),
@@ -23,17 +16,15 @@ ADMINS = (
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('EXPLAIN_DB'),
-        'USER': os.environ.get('EXPLAIN_DB_USER'),
-        'PASSWORD': os.environ.get('EXPLAIN_DB_PASS')
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(PROJECT_DIR, 'db.sqlite3'),
     }
 }
 
-
 MANAGERS = ADMINS
 
-ALLOWED_HOSTS = ['pyexplain'] # pyexplain it's used on development machine to simulate prd settings
+# pyexplain it's used on development machine to simulate prd settings
+ALLOWED_HOSTS = ['pyexplain']
 
 TIME_ZONE = 'America/Sao_Paulo'
 LANGUAGE_CODE = 'pt-BR'
@@ -44,14 +35,14 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-MEDIA_ROOT = PROJECT_DIR.child('media') #os.path.join(PROJECT_DIR, 'media')
+MEDIA_ROOT = PROJECT_DIR.child('media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = PROJECT_DIR.child('static') #os.path.join(PROJECT_DIR, 'static')
+STATIC_ROOT = PROJECT_DIR.child('staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    MEDIA_ROOT,
+    PROJECT_DIR.child('static'),
 )
 
 STATICFILES_FINDERS = (
@@ -61,25 +52,6 @@ STATICFILES_FINDERS = (
 
 SECRET_KEY = '%__a0u*5e@f0tcy1-fr*$^4er+((=v$j6l$(!8u!1v9$g8t$yt'
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.request',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-
-    # external processors
-    'social.apps.django_app.context_processors.backends',
-    'social.apps.django_app.context_processors.login_redirect',
-
-    # local processors
-    'website.context_processors.form_search',
-)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -92,9 +64,34 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'pyexplain.urls'
 WSGI_APPLICATION = 'pyexplain.wsgi.application'
 
-TEMPLATE_DIRS = (
-    PROJECT_DIR.child('templates') #os.path.join(PROJECT_DIR, 'templates'),
-)
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            PROJECT_DIR.child('templates')
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.core.context_processors.request',
+                'django.core.context_processors.debug',
+                'django.core.context_processors.media',
+                'django.core.context_processors.static',
+
+                # external processors
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
+
+                # local processors
+                'website.context_processors.form_search',
+            ],
+            'debug': DEBUG
+        },
+    },
+]
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -108,10 +105,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     # external apps
-    'selectable', # autocompletes
-    'south', # south for migrations
-    'social.apps.django_app.default', # social auth connections
-    'bootstrap3', # bootstrap-toolkit 3
+    'selectable',
+    'bootstrap3',
 
     # local apps
     'website',
@@ -151,5 +146,6 @@ SUIT_CONFIG = {
 
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 
 from .social import *

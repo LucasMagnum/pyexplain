@@ -2,6 +2,7 @@
 *.pot
 *.pyc
 *.db
+*.sqlite3
 *.html~
 *~
 local_settings.py

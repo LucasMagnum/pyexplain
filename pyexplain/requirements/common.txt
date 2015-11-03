@@ -1,16 +1,16 @@
-Django==1.5.2
-
-# mysql wrapper for python
-MySQL-python==1.2.4
+Django>=1.8,<1.9
 
 # for autocompletes
-django-selectable==0.7.0
+django-selectable
+
+# boostrap
+django-boostrap3
 
 # for django admin interface
-django-suit==0.2.4
+django-suit
+
+# social authentication
+python-social-auth
 
 # for manage path's  -- https://github.com/mikeorr/Unipath
-unipath==1.0
-
-# south for migrations
-south==0.8.2
+unipath

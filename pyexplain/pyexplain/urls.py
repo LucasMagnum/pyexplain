@@ -35,7 +35,8 @@ def handler500(request):
     Templates: `500.html`
     Context: None
     """
-    import sys,traceback
+    import sys
+    import traceback
     from django.template import Context, loader
     from django.http import HttpResponseServerError
 
@@ -45,6 +46,5 @@ def handler500(request):
     return HttpResponseServerError(t.render(Context({
         'exception_value': value,
         'DEBUG': settings.TEMPLATE_DEBUG,
-        'value':typo,
-        'tb':traceback.format_exception(typo, value, tb)})))
-
+        'value': typo,
+        'tb': traceback.format_exception(typo, value, tb)})))

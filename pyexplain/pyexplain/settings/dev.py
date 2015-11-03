@@ -1,8 +1,6 @@
 from .common import *
 
-
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -12,11 +10,13 @@ CACHES = {
     }
 }
 
-MIDDLEWARE_CLASSES += (
+ALLOWED_HOSTS = ['*']
+
+_MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-INSTALLED_APPS += (
+_INSTALLED_APPS = (
     'debug_toolbar',
 )
 
@@ -31,4 +31,3 @@ DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TEMPLATE_CONTEXT': True,
     'TAG': 'body',
 }
-
