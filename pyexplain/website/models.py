@@ -10,7 +10,7 @@ from attach.examples.models import Example
 
 from .templatetags.utils_tags import to_html
 
-ATTACHS_PER_OBJ = 6 # Maximo de attachs por objetos
+ATTACHS_PER_OBJ = 6  # Maximo de attachs por objetos
 
 
 class SlugModel(models.Model):
@@ -45,7 +45,7 @@ class Category(SlugModel):
     description = models.TextField(u'Descrição', blank=True)
     typo = models.CharField('Tipo', max_length=20, choices=TYPE_CHOICES)
 
-    slug_field = 'name' # qual campo irá receber o slug
+    slug_field = 'name'  # qual campo irá receber o slug
 
     class Meta:
         verbose_name = 'Categoria'
@@ -75,7 +75,7 @@ class Keyword(SlugModel):
     links = generic.GenericRelation(Link, content_type_field='model')
     examples = generic.GenericRelation(Example, content_type_field='model')
 
-    slug_field = 'codname' # qual campo irá receber o slug
+    slug_field = 'codname'  # qual campo irá receber o slug
 
     class Meta:
         ordering = ['codname']

@@ -45,7 +45,7 @@
     <h3> Exemplos
       {% if user.is_authenticated and keyword.can_add_examples %}
       <small>
-        <a href="{% url 'examples:create' keyword|meta:'app_label' keyword|meta:'module_name' keyword.id %}" class="btn btn-default btn-xs open-modal">
+        <a href="{% url 'examples:create' keyword|meta:'app_label' keyword|meta:'model_name' keyword.id %}" class="btn btn-default btn-xs open-modal">
           <i class="icon-code"></i> Enviar exemplo
         </a>
       </small>
@@ -88,7 +88,7 @@
     <h3> Links
       {% if user.is_authenticated and keyword.can_add_links %}
       <small class="pull-right">
-        <a href="{% url 'links:create' keyword|meta:'app_label' keyword|meta:'module_name' keyword.id %}" class="btn btn-default btn-xs open-modal">
+        <a href="{% url 'links:create' keyword|meta:'app_label' keyword|meta:'model_name' keyword.id %}" class="btn btn-default btn-xs open-modal">
           <i class="icon-external-link"></i> Enviar link
         </a>
       </small>

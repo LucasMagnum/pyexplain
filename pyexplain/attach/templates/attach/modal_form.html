@@ -14,7 +14,7 @@
         {% bootstrap_form form %}
       </div>
       <div class="modal-footer">
-        {% bootstrap_form_buttons %}
+        {% buttons %}
           {% if form.instance.id and can_delete_obj %}
           <button type="submit" name="_delete" class="btn btn-danger submit-modal-form">
             <i class="icon-trash"></i> Remover
@@ -24,7 +24,7 @@
           <button type="submit" class="btn btn-success submit-modal-form">
             <i class="icon-ok"></i> Salvar
           </button>
-        {% end_bootstrap_form_buttons %}
+        {% endbuttons %}
       </div>
     </form>
     {% endblock body %}
