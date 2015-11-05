@@ -1,8 +1,10 @@
-import views
-from django.conf.urls import patterns, url
+# coding: utf-8
+
+from . import views
+from django.conf.urls import url
 
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(
         r'^create/(?P<app_label>\w+)/(?P<model>\w+)/(?P<obj_id>\d+)/$',
         views.LinkCreateView.as_view(),
@@ -13,4 +15,4 @@ urlpatterns = patterns('',
         views.LinkUpdateView.as_view(),
         name='update'
     ),
-)
+]

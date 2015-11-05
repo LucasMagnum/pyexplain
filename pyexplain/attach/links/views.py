@@ -16,7 +16,7 @@ class LinkCreateView(ModalContentTypeMixin, generic.CreateView):
 
 
 class LinkUpdateView(RestrictUpdateMixin, ModalContentTypeMixin,
-                        generic.UpdateView):
+                     generic.UpdateView):
     model = Link
     form_class = LinkForm
 
