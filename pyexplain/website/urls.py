@@ -1,8 +1,10 @@
-import views
-from django.conf.urls import patterns, url
+# coding: utf-8
+
+from . import views
+from django.conf.urls import url
 
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(
         r'^$',
         views.IndexView.as_view(),
@@ -28,4 +30,4 @@ urlpatterns = patterns('',
         views.KeywordDetail.as_view(),
         name='keyword_detail'
     ),
-)
+]
