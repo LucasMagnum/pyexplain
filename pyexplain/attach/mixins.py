@@ -6,6 +6,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponse
+from django.views.generic import UpdateView
 from django.utils.decorators import method_decorator
 
 
@@ -19,7 +20,7 @@ class LoginRequiredMixin(object):
         return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
 
-class RestrictUpdateMixin(object):
+class RestrictUpdateMixin(UpdateView):
     """
         Só permite editar a view se for quem criou o objeto
         ou um superuser.

@@ -1,16 +1,16 @@
 # coding: utf-8
 
-from django.views import generic
+from django.views.generic import DetailView, ListView, TemplateView
 
 from .models import Keyword, Category
 from .utils import queryset_dump
 
 
-class IndexView(generic.TemplateView):
+class IndexView(TemplateView):
     template_name = 'website/index.html'
 
 
-class ExplainView(generic.TemplateView):
+class ExplainView(TemplateView):
     template_name = 'website/explain.html'
 
     def post(self, request, *args, **kwargs):
@@ -34,7 +34,7 @@ class ExplainView(generic.TemplateView):
         return self.render_to_response(context)
 
 
-class KeywordDetail(generic.DetailView):
+class KeywordDetail(DetailView):
     model = Keyword
     context_object_name = 'keyword'
     template_name = 'website/keyword_detail.html'
@@ -46,13 +46,13 @@ class KeywordDetail(generic.DetailView):
         return self.model.objects.filter(category__slug=category_slug)
 
 
-class CategoryList(generic.ListView):
+class CategoryList(ListView):
     model = Category
     context_object_name = 'categorys'
     template_name = 'website/category_list.html'
 
 
-class CategoryDetail(generic.DetailView):
+class CategoryDetail(DetailView):
     model = Category
     context_object_name = 'category'
     template_name = 'website/category_detail.html'
