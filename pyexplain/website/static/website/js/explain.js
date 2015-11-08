@@ -41,11 +41,15 @@ function show_links(){
     keyword = $(this);
     original_text = $(this).text();
     text = original_text.trim();
+
     if (clean_keywords.hasOwnProperty(text)){
       url = clean_keywords[text].url;
       category_id = clean_keywords[text].category_id;
 
-      keyword.html("<a data-toggle='popover' class='mapped_words' data-placement='bottom' data-title='"+ text +"' data-html=true href='" + url + "' data-category_id='"+ category_id +"' target='_blank'>" + original_text + "</a>");
+      keyword_template = "<a data-toggle='popover' class='mapped_words' data-placement='bottom' data-title='"+ text +"' data-html=true href='" + url + "' data-category_id='"+ category_id +"' target='_blank'>" + text + "</a>";
+      keyword_html = original_text.replace(text, keyword_template);
+
+      keyword.html(keyword_html);
     };
   });
 
